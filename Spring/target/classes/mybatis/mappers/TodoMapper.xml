@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.todo.dao.TodoMapper">
+
+	<insert id="addTodo" parameterType="spring.todo.dto.Todo">
+		insert into todo(id,content,regDate,status) values(SEQ_TODO.NEXTVAL,#{content},sysdate,#{status})
+	</insert>
+	
+	<select id="getTodoList" resultType="spring.todo.dto.Todo">
+		select * from todo
+	</select>
+	
+	<delete id="deleteTodo" parameterType="spring.todo.dto.Todo">
+		delete todo where id=#{id}
+	</delete>
+	
+	<update id="updateStatus" parameterType="spring.todo.dto.Todo">
+		update todo set status=#{status} where id=#{id}
+	</update>
+
+</mapper>

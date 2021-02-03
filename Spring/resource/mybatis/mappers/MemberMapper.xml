@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.todo.dao.MemberMapper">
+
+	<select id="getMember" resultType="spring.todo.dto.Member">
+		select * from members where id=#{id}
+	</select>
+	
+	<insert id="addMember" parameterType="spring.todo.dto.Member">
+		insert into members(id,name,password,email,join_date) values(#{id},#{name},#{password},#{email},sysdate)
+	</insert>
+	
+	<delete id="deleteMember" parameterType="spring.todo.dto.Member">
+		delete members where id=#{id}
+	</delete>
+
+</mapper>
